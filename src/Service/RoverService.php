@@ -39,4 +39,14 @@ class RoverService implements RoverServiceInterface
 
         return RoverBuilder::createSchemaFromEntity($roverEntity);
     }
+
+    public function getAllRovers(): array
+    {
+        return $this->roverRepository->getAllRovers();
+    }
+
+    public function flushRovers()
+    {
+        $this->roverRepository->flushChanges();
+    }
 }

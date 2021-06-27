@@ -11,6 +11,7 @@ use App\Schema\Position;
 use App\Schema\Rover;
 use Doctrine\Common\Collections\ArrayCollection;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\HttpFoundation\ParameterBag;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -39,8 +40,7 @@ class RoverCommandExecutorTest extends TestCase
      */
     public function testItShouldHandleExecutionOfCommand()
     {
-        $request = new Request();
-        $request->request->set('commands', 'LMLMLMLMM');
+        $request = new ParameterBag(['commands' => 'LMLMLMLMM']);
         $result = $this->roverCommandExecutor->executeCommand($request);
 
         $this->assertEquals($this->roverParameters->getRovers(), $result);

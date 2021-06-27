@@ -37,9 +37,8 @@ class PlateauControllerTest extends TestCase
      */
     public function testItShouldHandleCreatePlateauEndpoint()
     {
-        $request = new Request();
-        $request->request->set('height', 5);
-        $request->request->set('width', 5);
+        $request = $this->createMock(Request::class);
+        $request->method('getContent')->willReturn(json_encode(['height' => 5, 'width' => 5]));
 
         $plateau = $this->plateauController->createPlateau($request);
 
@@ -51,8 +50,8 @@ class PlateauControllerTest extends TestCase
      */
     public function testItShouldHandleGetPlateauEndpoint()
     {
-        $request = new Request();
-        $request->request->set('id', 1);
+        $request = $this->createMock(Request::class);
+        $request->method('getContent')->willReturn(json_encode(['id' => 1]));
 
         $plateau = $this->plateauController->getPlateau($request);
 

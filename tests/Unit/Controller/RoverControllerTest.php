@@ -45,9 +45,8 @@ class RoverControllerTest extends TestCase
      */
     public function testItShouldHandleExecuteCommandEndpoint()
     {
-        $request = new Request();
-        $request->request->set('height', 5);
-        $request->request->set('width', 5);
+        $request = $this->createMock(Request::class);
+        $request->method('getContent')->willReturn(json_encode(['height' => 5, 'width' => 5]));
 
         $rover = $this->roverController->executeCommand($request);
 
@@ -62,11 +61,13 @@ class RoverControllerTest extends TestCase
      */
     public function testItShouldHandleCreateRoverEndpoint()
     {
-        $request = new Request();
-        $request->request->set('plateau_id', 1);
-        $request->request->set('x', 1);
-        $request->request->set('y', 2);
-        $request->request->set('heading', Direction::NORTH);
+        $request = $this->createMock(Request::class);
+        $request->method('getContent')->willReturn(json_encode([
+            'plateau_id' => 1,
+            'x' => 1,
+            'y' => 2,
+            'heading' => Direction::NORTH,
+        ]));
 
         $rover = $this->roverController->createRover($request);
 
@@ -78,8 +79,8 @@ class RoverControllerTest extends TestCase
      */
     public function testItShouldHandleGetRoverEndpoint()
     {
-        $request = new Request();
-        $request->request->set('id', 1);
+        $request = $this->createMock(Request::class);
+        $request->method('getContent')->willReturn(json_encode(['id' => 1]));
 
         $rover = $this->roverController->getRover($request);
 
@@ -91,8 +92,8 @@ class RoverControllerTest extends TestCase
      */
     public function testItShouldHandleGetRoverStateEndpoint()
     {
-        $request = new Request();
-        $request->request->set('id', 1);
+        $request = $this->createMock(Request::class);
+        $request->method('getContent')->willReturn(json_encode(['id' => 1]));
 
         $rover = $this->roverController->getRoverState($request);
 

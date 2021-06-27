@@ -3,15 +3,26 @@
 namespace App\Schema;
 
 use App\Traits\JsonSerializableTrait;
+use Nelmio\ApiDocBundle\Annotation\Model;
+use Swagger\Annotations as SWG;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 class Position implements \JsonSerializable
 {
     use JsonSerializableTrait;
 
-    /** @var Point */
+    /**
+     * @var Point $positionX
+     * @SWG\Property(property="position_x", ref=@Model(type="\App\Schema\Point", groups={"exposed_data"})))
+     * @Groups("exposed_data")
+     */
     private $positionX;
 
-    /** @var Point */
+    /**
+     * @var Point $positionY
+     * @SWG\Property(property="position_y", ref=@Model(type="\App\Schema\Point", groups={"exposed_data"})))
+     * @Groups("exposed_data")
+     */
     private $positionY;
 
     /**
@@ -50,6 +61,9 @@ class Position implements \JsonSerializable
         return $this->positionY;
     }
 
+    /**
+     * @return string
+     */
     public function __toString(): string
     {
         return $this->positionX.' '.$this->positionY;

@@ -4,7 +4,7 @@ namespace App\Modules\RoverCommandExecutor;
 
 use App\Modules\RoverCommandExecutor\Parameters\RoverParameters;
 use Doctrine\Common\Collections\ArrayCollection;
-use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\ParameterBag;
 
 class RoverCommandExecutor
 {
@@ -16,9 +16,9 @@ class RoverCommandExecutor
         $this->roverCommandExecutorManager = $roverCommandExecutorManager;
     }
 
-    public function executeCommand(Request $request): ?ArrayCollection
+    public function executeCommand(ParameterBag $parameters): ?ArrayCollection
     {
-        $commands = $request->request->get('commands');
+        $commands = $parameters->get('commands', '');
         $roverParameters = (new RoverParameters())->setRequestCommands($commands);
 
         $rovers = $this->roverCommandExecutorManager->execute($roverParameters);

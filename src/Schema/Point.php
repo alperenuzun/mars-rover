@@ -3,6 +3,8 @@
 namespace App\Schema;
 
 use App\Traits\JsonSerializableTrait;
+use Swagger\Annotations as SWG;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 class Point implements \JsonSerializable
 {
@@ -10,6 +12,13 @@ class Point implements \JsonSerializable
 
     /**
      * @var int $point
+     * @SWG\Property(
+     *     property="point",
+     *     type="integer",
+     *     description="A point in the coordinate system",
+     *     example=1
+     * )
+     * @Groups("exposed_data")
      */
     private $point;
 
@@ -28,6 +37,14 @@ class Point implements \JsonSerializable
     public function movePoint(int $point): self
     {
         return new self($this->point + $point);
+    }
+
+    /**
+     * @return int
+     */
+    public function getPoint(): int
+    {
+        return $this->point;
     }
 
     /**

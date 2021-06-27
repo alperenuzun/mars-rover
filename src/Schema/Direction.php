@@ -3,6 +3,8 @@
 namespace App\Schema;
 
 use App\Traits\JsonSerializableTrait;
+use Swagger\Annotations as SWG;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 class Direction implements \JsonSerializable
 {
@@ -46,7 +48,16 @@ class Direction implements \JsonSerializable
         self::WEST  => -1,
     ];
 
-    /** @var string */
+    /**
+     * @var string $direction
+     * @SWG\Property(
+     *     property="direction",
+     *     type="string",
+     *     description="Rover heading",
+     *     example="N"
+     * )
+     * @Groups("exposed_data")
+     */
     private $direction;
 
     /**
@@ -84,6 +95,14 @@ class Direction implements \JsonSerializable
     public function axisValue(): int
     {
         return self::AXIS_VALUE_MAP[$this->direction];
+    }
+
+    /**
+     * @return string
+     */
+    public function getDirection(): string
+    {
+        return $this->direction;
     }
 
     /**

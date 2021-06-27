@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Unit\Service;
+namespace Unit\Service;
 
 use App\Builder\PlateauBuilder;
 use App\Entity\Plateau;

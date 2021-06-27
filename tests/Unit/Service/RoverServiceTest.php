@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Unit\Service;
+namespace Unit\Service;
 
 use App\Builder\RoverBuilder;
 use App\Entity\Plateau;

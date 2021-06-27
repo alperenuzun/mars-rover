@@ -82,9 +82,12 @@ class RoverParameters
 
     /**
      * @param array $commands
+     * @return RoverParameters
      */
-    public function setCommands(array $commands): void
+    public function setCommands(array $commands): self
     {
         $this->commands = $commands;
+
+        return $this;
     }
 }

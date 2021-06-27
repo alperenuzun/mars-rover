@@ -13,16 +13,16 @@ class RoverBuilder
 {
     public static function createSchemaFromEntity(Rover $rover): RoverSchema
     {
-        $plateauSchema = new RoverSchema(
+        $roverSchema = new RoverSchema(
             new Direction($rover->getDirection()),
             new Position(
                 new Point($rover->getPositionX()),
                 new Point($rover->getPositionY())
             )
         );
-        $plateauSchema->setId($rover->getId());
+        $roverSchema->setId($rover->getId());
 
-        return $plateauSchema;
+        return $roverSchema;
     }
 
     public static function createEntity(Plateau $plateau, int $positionX, int $positionY, string $direction): Rover

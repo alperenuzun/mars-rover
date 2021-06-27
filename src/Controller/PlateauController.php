@@ -22,8 +22,8 @@ class PlateauController extends AbstractController
      */
     public function createPlateau(Request $request): JsonResponse
     {
-        $height = $request->query->get('height', 0);
-        $width = $request->query->get('width', 0);
+        $height = $request->request->get('height', 0);
+        $width = $request->request->get('width', 0);
 
         $plateau = $this->plateauService->createPlateau($width, $height);
 
@@ -35,7 +35,7 @@ class PlateauController extends AbstractController
      */
     public function getPlateau(Request $request): JsonResponse
     {
-        $plateauId = $request->query->get('id', 0);
+        $plateauId = $request->request->get('id', 0);
         $plateau = $this->plateauService->getPlateau((int)$plateauId);
 
         return new JsonResponse($plateau);

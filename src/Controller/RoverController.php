@@ -41,10 +41,10 @@ class RoverController extends AbstractController
      */
     public function createRover(Request $request): JsonResponse
     {
-        $plateauId = $request->query->get('plateau_id');
-        $positionX = $request->query->get('x');
-        $positionY = $request->query->get('y');
-        $direction = $request->query->get('heading');
+        $plateauId = $request->request->get('plateau_id');
+        $positionX = $request->request->get('x');
+        $positionY = $request->request->get('y');
+        $direction = $request->request->get('heading');
 
         $plateau = $this->roverService->createRover($plateauId, $positionX, $positionY, $direction);
 
@@ -56,7 +56,7 @@ class RoverController extends AbstractController
      */
     public function getRover(Request $request): JsonResponse
     {
-        $roverId = $request->query->get('id', 0);
+        $roverId = $request->request->get('id', 0);
         $rover = $this->roverService->getRover((int)$roverId);
 
         return new JsonResponse($rover);
@@ -67,7 +67,7 @@ class RoverController extends AbstractController
      */
     public function getRoverState(Request $request): JsonResponse
     {
-        $roverId = $request->query->get('id', 0);
+        $roverId = $request->request->get('id', 0);
         $rover = $this->roverService->getRover((int)$roverId);
 
         return new JsonResponse(new RoverState((string)$rover));

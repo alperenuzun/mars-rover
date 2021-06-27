@@ -18,7 +18,7 @@ class RoverCommandExecutor
 
     public function executeCommand(Request $request): ?ArrayCollection
     {
-        $commands = $request->query->get('commands');
+        $commands = $request->request->get('commands');
         $roverParameters = (new RoverParameters())->setRequestCommands($commands);
 
         $rovers = $this->roverCommandExecutorManager->execute($roverParameters);

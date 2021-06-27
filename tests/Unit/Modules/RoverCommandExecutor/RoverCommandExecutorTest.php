@@ -40,7 +40,7 @@ class RoverCommandExecutorTest extends TestCase
     public function testItShouldHandleExecutionOfCommand()
     {
         $request = new Request();
-        $request->query->set('commands', 'LMLMLMLMM');
+        $request->request->set('commands', 'LMLMLMLMM');
         $result = $this->roverCommandExecutor->executeCommand($request);
 
         $this->assertEquals($this->roverParameters->getRovers(), $result);

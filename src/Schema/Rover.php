@@ -2,8 +2,15 @@
 
 namespace App\Schema;
 
-class Rover
+use App\Traits\JsonSerializableTrait;
+
+class Rover implements \JsonSerializable
 {
+    use JsonSerializableTrait;
+
+    /** @var int|null $id */
+    private $id;
+
     /** @var Direction */
     private $direction;
 
@@ -46,10 +53,26 @@ class Rover
     }
 
     /**
+     * @return int
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
      * @return string
      */
     public function __toString(): string
     {
-        return $this->position . ' ' . $this->direction;
+        return $this->position.' '.$this->direction;
     }
 }

@@ -2,8 +2,15 @@
 
 namespace App\Schema;
 
-class Plateau
+use App\Traits\JsonSerializableTrait;
+
+class Plateau implements \JsonSerializable
 {
+    use JsonSerializableTrait;
+
+    /** @var int|null $id */
+    private $id;
+
     /**
      * @var Position|null $position
      */
@@ -15,6 +22,22 @@ class Plateau
     public function __construct(Position $position)
     {
         $this->position = $position;
+    }
+
+    /**
+     * @return int
+     */
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param int $id
+     */
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 
     /**

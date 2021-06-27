@@ -2,8 +2,12 @@
 
 namespace App\Schema;
 
-class Position
+use App\Traits\JsonSerializableTrait;
+
+class Position implements \JsonSerializable
 {
+    use JsonSerializableTrait;
+
     /** @var Point */
     private $positionX;
 

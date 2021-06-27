@@ -2,8 +2,12 @@
 
 namespace App\Schema;
 
-class Direction
+use App\Traits\JsonSerializableTrait;
+
+class Direction implements \JsonSerializable
 {
+    use JsonSerializableTrait;
+
     public const NORTH = 'N';
     public const EAST  = 'E';
     public const WEST  = 'W';

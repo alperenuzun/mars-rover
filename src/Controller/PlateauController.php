@@ -53,6 +53,20 @@ class PlateauController extends AbstractController
      *     description="Returns the info about the created plateau",
      *     @Model(type="\App\Schema\Plateau", groups={"exposed_data"})
      * )
+     *
+     * @SWG\Response(
+     *     response=500,
+     *     description="Returns the error message when faced with an error",
+     *     @SWG\Schema(
+     *         type="object",
+     *         @SWG\Property(
+     *             property="message",
+     *             type="string",
+     *             description="Error message",
+     *             example="Please give a valid body!",
+     *         )
+     *     )
+     * )
      */
     public function createPlateau(Request $request): JsonResponse
     {
@@ -91,6 +105,20 @@ class PlateauController extends AbstractController
      *     response=200,
      *     description="Returns the info about the requested plateau",
      *     @Model(type="\App\Schema\Plateau", groups={"exposed_data"})
+     * )
+     *
+     * @SWG\Response(
+     *     response=500,
+     *     description="Returns the error message when faced with an error",
+     *     @SWG\Schema(
+     *         type="object",
+     *         @SWG\Property(
+     *             property="message",
+     *             type="string",
+     *             description="Error message",
+     *             example="Please give a valid body!",
+     *         )
+     *     )
      * )
      */
     public function getPlateau(Request $request): JsonResponse

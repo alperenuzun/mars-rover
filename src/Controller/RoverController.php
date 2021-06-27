@@ -55,6 +55,20 @@ class RoverController extends AbstractController
      *     description="Returns the info about each rover's state",
      *     @Model(type="\App\Schema\RoverResult", groups={"exposed_data"})
      * )
+     *
+     * @SWG\Response(
+     *     response=500,
+     *     description="Returns the error message when faced with an error",
+     *     @SWG\Schema(
+     *         type="object",
+     *         @SWG\Property(
+     *             property="message",
+     *             type="string",
+     *             description="Error message",
+     *             example="Please give a valid body!",
+     *         )
+     *     )
+     * )
      */
     public function executeCommand(Request $request): JsonResponse
     {
@@ -110,6 +124,20 @@ class RoverController extends AbstractController
      *     description="Returns the info about the created rover",
      *     @Model(type="\App\Schema\Rover", groups={"exposed_data"})
      * )
+     *
+     * @SWG\Response(
+     *     response=500,
+     *     description="Returns the error message when faced with an error",
+     *     @SWG\Schema(
+     *         type="object",
+     *         @SWG\Property(
+     *             property="message",
+     *             type="string",
+     *             description="Error message",
+     *             example="Please give a valid body!",
+     *         )
+     *     )
+     * )
      */
     public function createRover(Request $request): JsonResponse
     {
@@ -151,6 +179,20 @@ class RoverController extends AbstractController
      *     description="Returns the info about the requested rover",
      *     @Model(type="\App\Schema\Rover", groups={"exposed_data"})
      * )
+     *
+     * @SWG\Response(
+     *     response=500,
+     *     description="Returns the error message when faced with an error",
+     *     @SWG\Schema(
+     *         type="object",
+     *         @SWG\Property(
+     *             property="message",
+     *             type="string",
+     *             description="Error message",
+     *             example="Please give a valid body!",
+     *         )
+     *     )
+     * )
      */
     public function getRover(Request $request): JsonResponse
     {
@@ -188,6 +230,21 @@ class RoverController extends AbstractController
      *     description="Returns the state info about the requested rover",
      *     @Model(type="\App\Schema\RoverState", groups={"exposed_data"})
      * )
+     *
+     * @SWG\Response(
+     *     response=500,
+     *     description="Returns the error message when faced with an error",
+     *     @SWG\Schema(
+     *         type="object",
+     *         @SWG\Property(
+     *             property="message",
+     *             type="string",
+     *             description="Error message",
+     *             example="Please give a valid body!",
+     *         )
+     *     )
+     * )
+     *
      */
     public function getRoverState(Request $request): JsonResponse
     {
